@@ -214,10 +214,10 @@ def create_playlist(ytmusic, playlist_name, playlist_description, video_ids):
         return None
 
 def main():
+    # Initialize
     reset_headers_file()
     # Setup headers authentication
     headers_path = setup_headers()
-    
     # Initialize YTMusic with headers
     ytmusic = YTMusic(headers_path)
     
@@ -225,14 +225,12 @@ def main():
     if not check_auth(ytmusic):
         print("Authentication failed. Please try running the script again.")
         return
-
     print("Authentication successful!")
 
     # Get input file name
     input_file = input("\nEnter the name of your input file (default: music_list.txt): ").strip() or "music_list.txt"
-
-    # Read songs from file
     song_list = read_song_list(input_file)
+
     if not song_list:
         print("No songs were loaded. Please check your input file.")
         return
